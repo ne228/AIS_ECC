@@ -1,0 +1,22 @@
+.container {
+    /*min-height: 500px;*/
+
+}
+
+.applicant input {
+    margin-top: 10px;
+}
+
+.suspect input {
+    margin-top: 10px;
+}
+
+.applicant {
+    border-bottom: #5c636a solid 1px;
+    padding: 1%;
+
+}
+
+.suspect {
+    border: gray 1px solid;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" lang="ru">
+<head>
+    <title></title>
+    <link th:include="template/_metaStyle :: head"/>
+</head>
+<body>
+<!--<div th:insert="template/header :: header"></div>-->
+<div th:insert="template/header.html"></div>
+
+
+<div class="container">
+
+    <h2>Login</h2>
+    <form th:object="${createUD}" th:action="@{/UD/create}" method="POST">
+        <div class="form-group">
+            <label for="Occasion">Повод</label>
+            <input type="text" class="form-control" placeholder="Введите повод" id="Occasion" name="Occasion"
+                   th:field="*{Occasion}">
+            <p class="text-danger" th:if="${#fields.hasErrors('Occasion')}" th:errors="*{Occasion}"></p>
+        </div>
+        <div class="form-group">
+            <label for="Base">Основание</label>
+            <input type="text" class="form-control" placeholder="Введите основание" id="Base" name="Base"
+                   th:field="*{Base}">
+            <p class="text-danger" th:if="${#fields.hasErrors('Base')}" th:errors="*{Base}"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="Article">Статья</label>
+            <input type="text" class="form-control" placeholder="Введите статью" id="Article" name="Article"
+                   th:field="*{Article}">
+            <p class="text-danger" th:if="${#fields.hasErrors('Article')}" th:errors="*{Article}"></p>
+        </div>
+
+
+        <div class="form-group">
+            <label for="TextOfApplicant">Текст заявления</label>
+            <input type="text" class="form-control" placeholder="Введите текст заявления" id="TextOfApplicant"
+                   name="TextOfApplicant" th:field="*{TextOfApplicant}">
+            <p class="text-danger" th:if="${#fields.hasErrors('TextOfApplicant')}" th:errors="*{TextOfApplicant}"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="Fabula">Фабула</label>
+            <input type="text" class="form-control" placeholder="Введите фабулу" id="Fabula" name="Fabula"
+                   th:field="*{Fabula}">
+            <p class="text-danger" th:if="${#fields.hasErrors('Fabula')}" th:errors="*{Fabula}"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="applicant">Укажите заявителей:</label>
+            <select id="applicant" class="form-control form-select form-select-lg mb-3" name="ApplicantIds"
+                    th:field="*{ApplicantIds}"
+                    multiple="multiple">
+                <option th:each="user : ${users}" th:value="${user.id}"
+                        th:text="${user.surname + ' ' + user.name + ' ' + user.lastName + ' ' + user.dateOfBirth}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="suspect">Укажите подозреваемых:</label>
+            <select id="suspect" class="form-control form-select form-select-lg mb-3" name="SuspectIds"
+                    th:field="*{SuspectIds}" multiple="multiple">
+                <option th:each="user : ${users}" th:value="${user.id}"
+                        th:text="${user.surname + ' ' + user.name + ' ' + user.lastName + ' ' + user.dateOfBirth}"></option>
+            </select>
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary">Создать</button>
+    </form>
+</div>
+
+<div th:insert="template/footer :: footer"></div>
+
+</body>
+</html>
+

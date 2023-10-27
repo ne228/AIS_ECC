@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" lang="ru">
+<head>
+    <title></title>
+    <link th:include="template/_metaStyle :: head"/>
+</head>
+
+<div th:insert="template/header.html"></div>
+
+<body>
+<div class="container">
+    <h1 class="mt-4" align="center" th:text="'Уголовное дело №' + ${createUD.Id}"></h1>
+    <h2 class="mt-4" align="center">Возбуждение уголовного дела</h2>
+    <div class="mt-4">
+        <h4>Повод:</h4>
+        <p th:text="${createUD.Occasion}" class="lead border p-3 mt-3"></p>
+    </div>
+    <div class="mt-4">
+        <h4>Основание:</h4>
+        <p th:text="${createUD.Base}" class="lead border p-3 mt-3"></p>
+    </div>
+    <div class="mt-4">
+        <h4>Статья:</h4>
+        <p th:text="${createUD.Article}" class="lead border p-3 mt-3"></p>
+    </div>
+    <div class="mt-4">
+        <h4>Текст заявления:</h4>
+        <p th:text="${createUD.TextOfApplicant}" class="lead border p-3 mt-3"></p>
+    </div>
+    <div class="mt-4">
+        <h4>Фабула:</h4>
+        <p th:text="${createUD.Fabula}" class="lead border p-3 mt-3"></p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Заявители:</h3>
+        <div th:each="applicant, iterStat : ${createUD.Applicant}" class="border border-success p-3 mt-3" >
+            <h5 th:text="'Заявитель ' + ${iterStat.index + 1}"></h5>
+            <p><strong>Фамилия:</strong> <span class="lead" th:text="${applicant.surname}"></span></p>
+            <p><strong>Имя:</strong> <span class="lead" th:text="${applicant.name}"></span></p>
+            <p><strong>Отчество:</strong> <span class="lead" th:text="${applicant.lastName}"></span></p>
+            <p><strong>Паспортные данные:</strong> <span class="lead" th:text="${applicant.passport}"></span></p>
+            <p><strong>Дата рождения:</strong> <span class="lead" th:text="${applicant.dateOfBirth}"></span></p>
+            <!-- Добавьте другие поля объекта Applicant по необходимости -->
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h3>Подозреваемые:</h3>
+        <div th:each="suspect, iterStat : ${createUD.Suspect}" class="border border-danger p-3 mt-3">
+            <h5 th:text="'Подозреваемый ' + ${iterStat.index + 1}"></h5>
+            <p><strong>Фамилия:</strong> <span class="lead" th:text="${suspect.surname}"></span></p>
+            <p><strong>Имя:</strong> <span class="lead" th:text="${suspect.name}"></span></p>
+            <p><strong>Отчество:</strong> <span class="lead" th:text="${suspect.lastName}"></span></p>
+            <p><strong>Паспортные данные:</strong> <span class="lead" th:text="${suspect.passport}"></span></p>
+            <p><strong>Дата рождения:</strong> <span class="lead" th:text="${suspect.dateOfBirth}"></span></p>
+            <!-- Добавьте другие поля объекта Suspect по необходимости -->
+        </div>
+    </div>
+</div>
+</body>
+<div th:insert="template/footer :: footer"></div>
+</html>

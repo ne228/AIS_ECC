@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <link th:include="template/_metaStyle :: head"/>
+</head>
+<body>
+<div th:insert="template/header.html"></div>
+<div class="container">
+    <a href="/UD/create">Create UD</a>
+    <h1>User Details</h1>
+    <div th:object="${user}">
+        <p th:text="'ID: ' + ${user.id}"></p>
+        <p th:text="'Username: ' + ${user.username}"></p>
+        <p th:text="'Email: ' + ${user.email}"></p>
+        <p th:text="'Password: ' + ${user.password}"></p>
+        <p th:text="'Surname: ' + ${user.surname}"></p>
+        <p th:text="'Name: ' + ${user.name}"></p>
+        <p th:text="'Last Name: ' + ${user.lastName}"></p>
+        <p th:text="'Passport: ' + ${user.passport}"></p>
+        <p th:text="'Date of Birth: ' + ${user.dateOfBirth}"></p>
+        <h3>Roles:</h3>
+        <ul>
+            <li th:each="role : ${user.roles}" th:text="${role.name}"></li>
+        </ul>
+    </div>
+</div>
+</body>
+
+<div th:insert="template/footer :: footer"></div>
+</html>
